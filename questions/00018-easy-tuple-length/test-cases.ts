@@ -1,13 +1,22 @@
+/* eslint-disable @typescript-eslint/comma-dangle */
 import type { Equal, Expect } from '@type-challenges/utils'
 
 const tesla = ['tesla', 'model 3', 'model X', 'model Y'] as const
-const spaceX = ['FALCON 9', 'FALCON HEAVY', 'DRAGON', 'STARSHIP', 'HUMAN SPACEFLIGHT'] as const
+const spaceX = [
+  'FALCON 9',
+  'FALCON HEAVY',
+  'DRAGON',
+  'STARSHIP',
+  'HUMAN SPACEFLIGHT',
+] as const
+const empty = [] as const
 
 type cases = [
   Expect<Equal<Length<typeof tesla>, 4>>,
   Expect<Equal<Length<typeof spaceX>, 5>>,
+  Expect<Equal<Length<typeof empty>, 0>>,
   // @ts-expect-error
   Length<5>,
   // @ts-expect-error
-  Length<'hello world'>,
+  Length<'hello world'>
 ]
